@@ -29,6 +29,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Ensure uploads directory exists
+const fs = require('fs');
+if (!fs.existsSync('uploads')) {
+  fs.mkdirSync('uploads');
+}
+
 // Routes
 app.use('/auth', require('./routes/auth'));
 app.use('/submit-service', require('./routes/pan'));
@@ -38,10 +44,16 @@ app.post('/login', (req, res) => res.redirect('/auth/login'));
 app.use('/submit-service', require('./routes/xerox'));
 app.use('/submit-service', require('./routes/certificate'));
 app.use('/', require('./routes/requests'));
-const fs = require('fs');
-if (!fs.existsSync('uploads')) {
-  fs.mkdirSync('uploads');
-}
+
+// Root route fallback
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'startbootstrap-simple-sidebar-gh-pages', 'index.html'));
+});
+
+// Handle 404s
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'startbootstrap-simple-sidebar-gh-pages', '404.html'));
+});
 
 // Start the server
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

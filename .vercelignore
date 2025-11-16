@@ -1,0 +1,10 @@
+node_modules
+.env
+.env.local
+.env.production
+.vercel
+uploads/*
+!uploads/.gitkeep
+logs
+*.log
+.DS_Store
