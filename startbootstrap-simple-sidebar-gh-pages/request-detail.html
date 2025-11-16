@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Request Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .detail-label {
+      font-weight: 600;
+      color: #555;
+    }
+    .detail-box {
+      background-color: #f9f9f9;
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    .uploaded-img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">📋 Request Details</h4>
+      </div>
+      <div class="card-body">
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <div class="detail-box">
+              <p>
+                <span class="detail-label">Full Name:</span>
+                <%= request.details.fullName %>
+              </p>
+              <p>
+                <span class="detail-label">Email:</span>
+                <%= user.email %>
+              </p>
+              <p>
+                <span class="detail-label">Tracking ID:</span>
+                #<%= request._id %>
+              </p>
+              <p>
+                <span class="detail-label">Request Type:</span>
+                <%= request.serviceType %>
+              </p>
+              <p>
+                <span class="detail-label">Current Status:</span>
+                <span class="badge 
+                  <%= request.status === 'Completed' ? 'bg-success' : 
+                      request.status === 'Ongoing' ? 'bg-warning text-dark' : 'bg-secondary' %>">
+                  <%= request.status %>
+                </span>
+              </p>
+              <p>
+                <span class="detail-label">Submitted On:</span>
+                <%= new Date(request.createdAt).toLocaleString() %>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="detail-box">
+              <p class="detail-label">Uploaded Documents:</p>
+              <% if (request.documents && request.documents.length > 0) { %>
+                <% request.documents.forEach(function(doc) { %>
+                  <img src="<%= doc %>" alt="Uploaded document" class="uploaded-img mb-2">
+                <% }) %>
+              <% } else { %>
+                <p class="text-muted">No documents uploaded.</p>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <a href="/request-detail.html" class="btn btn-secondary">← Back</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

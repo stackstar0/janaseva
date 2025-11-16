@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document Services Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- ===== Main App (Sidebar + Dashboard) ===== -->
+  <div class="d-flex flex-grow-1" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-dark" id="sidebar-wrapper">
+      <div class="sidebar-heading text-white py-4 px-3 fs-5 border-bottom">
+        <i class="fa-solid fa-user-shield"></i> Document Services
+      </div>
+      <div class="list-group list-group-flush">
+        <a href="dashboard.html" class="list-group-item list-group-item-action bg-dark text-white">
+          <i class="fa-solid fa-info-circle"></i> About
+        </a>
+        <a href="pan.html" class="list-group-item list-group-item-action bg-dark text-white">
+          <i class="fa-solid fa-id-card"></i> PAN Card Application
+        </a>
+        <a href="aadhar.html" class="list-group-item list-group-item-action bg-dark text-white">
+          <i class="fa-solid fa-address-card"></i> Aadhaar Card Services
+        </a>
+        <a href="income-caste.html" class="list-group-item list-group-item-action bg-dark text-white">
+          <i class="fa-solid fa-file-invoice-dollar"></i> Income/Caste Services
+        </a>
+        <a href="xerox-services.html" class="list-group-item list-group-item-action bg-dark text-white">
+          <i class="fa-solid fa-copy"></i> Xerox Services
+        </a>
+      </div>
+    </div>
+
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper" class="flex-grow-1 d-flex flex-column">
+      <!-- Top navigation-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container-fluid">
+          <button class="btn btn-outline-dark me-2" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+          <a class="navbar-brand fw-bold" href="about.html">Document Services</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="logout()">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main content-->
+      <main class="container-fluid p-4 flex-grow-1">
+        <h2>Welcome to Document Services Portal</h2>
+        <p>
+          Please choose a service from the sidebar to begin your application for PAN Card, Aadhaar Card, Income/Caste Certificate, or Xerox.
+        </p>
+      </main>
+
+      <!-- ✅ Footer -->
+      <footer class="text-center py-3 bg-white border-top">
+        <small>&copy; 2025 Janasava | Operated by Corepair. All Rights Reserved.</small><br>
+        <a href="privacy.html" class="text-decoration-none me-2">Privacy Policy</a> |
+        <a href="terms.html" class="text-decoration-none ms-2">Terms & Conditions</a>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginPage" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3">
+        <div class="modal-header">
+          <h5 class="modal-title">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form onsubmit="doLogin(event)">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="loginEmail" required />
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="registerPage" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3">
+        <div class="modal-header">
+          <h5 class="modal-title">Register</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form onsubmit="doRegister(event)">
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="registerEmail" required />
+            </div>
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="registerPassword" required />
+            </div>
+            <button type="submit" class="btn btn-success w-100">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showLogin() {
+      new bootstrap.Modal(document.getElementById('loginPage')).show();
+    }
+
+    function showRegister() {
+      new bootstrap.Modal(document.getElementById('registerPage')).show();
+    }
+
+    function doLogin(event) {
+      event.preventDefault();
+      alert('Login successful!');
+      bootstrap.Modal.getInstance(document.getElementById('loginPage')).hide();
+    }
+
+    function doRegister(event) {
+      event.preventDefault();
+      alert('Registration successful!');
+      bootstrap.Modal.getInstance(document.getElementById('registerPage')).hide();
+    }
+
+    function logout() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

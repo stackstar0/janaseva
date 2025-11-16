@@ -1,0 +1,90 @@
+/* LANDING PAGE STYLES */
+.landing-page-bg {
+  background: linear-gradient(135deg, #e9f5ff 0%, #f4f8fb 100%);
+}
+
+/* Sidebar styles */
+#wrapper {
+  min-height: 100vh;
+}
+#sidebar-wrapper {
+  min-width: 220px;
+  max-width: 240px;
+  transition: all 0.3s;
+}
+#sidebar-wrapper .sidebar-heading {
+  background: #198754;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+#sidebar-wrapper .list-group-item {
+  border: none;
+  transition: background 0.2s;
+}
+#sidebar-wrapper .list-group-item:hover,
+#sidebar-wrapper .list-group-item.active {
+  background: #157347;
+  color: #fff;
+}
+#page-content-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+@media (max-width: 768px) {
+  #sidebar-wrapper {
+    min-width: 0;
+    max-width: 0;
+    display: none;
+  }
+  #sidebar-wrapper.active {
+    min-width: 220px;
+    max-width: 240px;
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    height: 100%;
+    background: #212529;
+    top: 0;
+    left: 0;
+  }
+}
+
+/* Modal styles for login/register */
+.modal-bg {
+  position: fixed;
+  z-index: 1050;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-dialog-centered {
+  max-width: 350px;
+  width: 100%;
+  margin: auto;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 32px 0 rgba(0,0,0,0.08);
+  padding: 1rem;
+}
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+.btn-close:hover {
+  opacity: 1;
+}
+@media (max-width: 600px) {
+  .modal-dialog-centered {
+    max-width: 96vw;
+  }
+  .landing-page-bg .card {
+    margin-bottom: 1rem;
+  }
+}

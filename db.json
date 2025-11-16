@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "email": "admin@admin.com",
+      "fullname": "Admin",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "fullname": "admin",
+      "email": "sohail@admin.com",
+      "password": "admin",
+      "role": "user"
+    },
+    {
+      "fullname": "Sohail kustagi",
+      "email": "sohailkustagi1@gmail.com",
+      "password": "12345",
+      "role": "user"
+    },
+    {
+      "fullname": "hfx",
+      "email": "stackswift7@gmail.com",
+      "password": "haiza",
+      "role": "user"
+    },
+    {
+      "fullname": "hfz",
+      "email": "hafizajakkli7@gmail.com",
+      "password": "hafiza",
+      "role": "user"
+    }
+  ],
+  "uploads": []
+}

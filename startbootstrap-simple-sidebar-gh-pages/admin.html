@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      margin: 0;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #212529;
+      color: white;
+      padding: 20px;
+    }
+    .sidebar h4 {
+      margin-bottom: 30px;
+    }
+    .sidebar a {
+      color: white;
+      display: block;
+      margin: 15px 0;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .sidebar a:hover {
+      color: #ffc107;
+    }
+    .main-content {
+      flex-grow: 1;
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .container-fluid {
+      padding: 20px;
+    }
+    .card-stats {
+      border-left: 5px solid #0d6efd;
+    }
+    .card-stats.completed {
+      border-color: #198754;
+    }
+    .card-stats.ongoing {
+      border-color: #ffc107;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h4>Admin Panel</h4>
+    <a href="admin.html">Dashboard</a>
+    <a href="pending.html">Pending Requests</a>
+    <a href="ongoing.html">Ongoing Requests</a>
+    <a href="completed.html">Completed Requests</a>
+    <a href="index.html">Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Admin Dashboard</span>
+      </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+      <h3>Welcome, Admin</h3>
+      <p>Select an option from the sidebar to manage requests.</p>
+
+      <!-- Stat Cards -->
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="card card-stats shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Pending Requests</h5>
+              <p class="card-text fs-4 text-primary" id="pending-count">Loading...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-stats ongoing shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Ongoing Requests</h5>
+              <p class="card-text fs-4 text-warning" id="ongoing-count">Loading...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-stats completed shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Completed Requests</h5>
+              <p class="card-text fs-4 text-success" id="completed-count">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load dashboard statistics
+    fetch('/admin-stats')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('pending-count').textContent = data.pending;
+        document.getElementById('ongoing-count').textContent = data.ongoing;
+        document.getElementById('completed-count').textContent = data.completed;
+      })
+      .catch(error => {
+        console.error('Error loading stats:', error);
+        document.getElementById('pending-count').textContent = '0';
+        document.getElementById('ongoing-count').textContent = '0';
+        document.getElementById('completed-count').textContent = '0';
+      });
+  </script>
+</body>
+</html>
