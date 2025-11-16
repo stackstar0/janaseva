@@ -14,7 +14,7 @@ In your Vercel dashboard, add these environment variables:
 ```bash
 MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/janaseva?retryWrites=true&w=majority
 GOOGLE_CLIENT_ID=your_google_client_id_here
-GOOGLE_CLIENT_SECRET=your_google_client_secret_here  
+GOOGLE_CLIENT_SECRET=your_google_client_secret_here
 SESSION_SECRET=your_strong_random_session_secret_here
 ```
 
@@ -123,11 +123,11 @@ SESSION_SECRET=your_session_secret
 
 ## Success Indicators
 
-✅ Deployment completes without errors  
-✅ App loads at vercel.app URL  
-✅ Static files (CSS, JS) load correctly  
-✅ Database connection works  
-✅ Google OAuth login functions  
+✅ Deployment completes without errors
+✅ App loads at vercel.app URL
+✅ Static files (CSS, JS) load correctly
+✅ Database connection works
+✅ Google OAuth login functions
 ✅ File uploads work (if applicable)
 
 ## Support
