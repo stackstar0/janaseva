@@ -45,12 +45,12 @@ A comprehensive digital service portal for government document applications and 
    ```
 
 3. **Environment Configuration**
-   
+
    Copy the example environment file:
    ```bash
    cp .env.example .env
    ```
-   
+
    Fill in your environment variables in `.env`:
    ```env
    # Database
@@ -75,7 +75,7 @@ A comprehensive digital service portal for government document applications and 
    ```bash
    npm start
    ```
-   
+
    The application will be available at `http://localhost:3000`
 
 ## 📁 Project Structure
